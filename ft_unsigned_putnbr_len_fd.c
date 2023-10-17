@@ -1,41 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_unsigned_putnbr_len_fd.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aweissha <aweissha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/11 14:20:37 by aweissha          #+#    #+#             */
-/*   Updated: 2023/10/11 14:57:27 by aweissha         ###   ########.fr       */
+/*   Created: 2023/10/17 12:04:32 by aweissha          #+#    #+#             */
+/*   Updated: 2023/10/17 16:20:14 by aweissha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_unsigned_putnbr_len_fd(unsigned int n, int *len, int fd)
 {
-	if (n == -2147483648)
-	{
-		ft_putstr_fd("-2", fd);
-		n = 147483648;
-	}
-	if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		n = n * (-1);
-	}
 	if (n >= 10)
 	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putchar_fd((n % 10) + '0', fd);
+		ft_unsigned_putnbr_len_fd(n / 10, len, fd);
+		ft_putchar_len_fd((n % 10) + '0', len, fd);
 	}
 	else
-		ft_putchar_fd((n % 10) + '0', fd);
+		ft_putchar_len_fd((n % 10) + '0', len, fd);
 }
-// int main(void)
-// {
-// 	int n;
-
-// 	n = 123;
-// 	ft_putnbr_fd(n, 1);
-// }

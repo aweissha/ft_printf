@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putstr_len_fd.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aweissha <aweissha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/11 13:46:21 by aweissha          #+#    #+#             */
-/*   Updated: 2023/10/11 13:59:25 by aweissha         ###   ########.fr       */
+/*   Created: 2023/10/11 14:04:19 by aweissha          #+#    #+#             */
+/*   Updated: 2023/10/17 16:19:54 by aweissha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_putstr_len_fd(char *s, int *len, int fd)
 {
-	write(fd, &c, 1);
+	unsigned int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		(*len)++;
+		i++;
+	}
 }
 // int main(void)
 // {
-// 	ft_putchar_fd('z', 1);
+// 	char s[] = "blablabla";
+// 	ft_putstr_fd(s, 1);
 // }
