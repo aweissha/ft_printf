@@ -6,13 +6,13 @@
 /*   By: aweissha <aweissha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 12:06:08 by aweissha          #+#    #+#             */
-/*   Updated: 2023/10/17 17:25:28 by aweissha         ###   ########.fr       */
+/*   Updated: 2023/10/18 12:13:47 by aweissha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbr_hex_len_fd(long nbr, int *len, int fd)
+void	ft_putnbr_hex_len_fd(unsigned int nbr, int *len, int fd)
 {
 	if (nbr < 0)
 	{

@@ -3,7 +3,7 @@ NAME = libftprintf.a
 .DEFAULT_GOAL := all
 
 SRCS =			ft_printf.c \
-				ft_putptr_hex_len_fd.c \
+				ft_putptr.c \
 				ft_unsigned_putnbr_len_fd.c \
 				ft_putnbr_hex_len_fd.c \
 				ft_putnbr_hex_upper_len_fd.c \

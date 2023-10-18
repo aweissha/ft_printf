@@ -6,7 +6,7 @@
 /*   By: aweissha <aweissha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 14:04:19 by aweissha          #+#    #+#             */
-/*   Updated: 2023/10/18 10:19:17 by aweissha         ###   ########.fr       */
+/*   Updated: 2023/10/18 12:14:23 by aweissha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,14 @@ void	ft_putstr_len_fd(char *s, int *len, int fd)
 		write(fd, "(null)", 6);
 		(*len) += 6;
 	}
-	while (s[i])
+	else
 	{
-		write(fd, &s[i], 1);
-		(*len)++;
-		i++;
+		while (s[i])
+		{
+			write(fd, &s[i], 1);
+			(*len)++;
+			i++;
+		}
 	}
 }
 // int main(void)
