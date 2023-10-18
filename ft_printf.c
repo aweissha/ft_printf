@@ -6,7 +6,7 @@
 /*   By: aweissha <aweissha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:36:58 by aweissha          #+#    #+#             */
-/*   Updated: 2023/10/18 12:59:27 by aweissha         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:19:18 by aweissha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,19 @@ int	ft_printf(const char *string, ...)
 		else
 			ft_putchar_len_fd(string[i], &len, 1);
 		i++;
+		if (len == -1)
+			return (len);
 	}
 	va_end(args);
 	return (len);
 }
 
+// #include <stdio.h>
 // int	main(void)
 // {
-// 	ft_printf("%p\n", NULL);
+	// printf("real printf:");
+	// printf("\001\002\007\v\010\f\r\n");
+	// printf("\n");
+// 	printf("my printf:");
+// 	ft_printf("\001\002\007\v\010\f\r\n");
 // }
