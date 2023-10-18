@@ -6,7 +6,7 @@
 /*   By: aweissha <aweissha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 14:04:19 by aweissha          #+#    #+#             */
-/*   Updated: 2023/10/18 12:14:23 by aweissha         ###   ########.fr       */
+/*   Updated: 2023/10/18 12:30:05 by aweissha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_putstr_len_fd(char *s, int *len, int fd)
 	}
 	else
 	{
-		while (s[i])
+		while (s[i] != '\0')
 		{
 			write(fd, &s[i], 1);
 			(*len)++;

@@ -6,29 +6,29 @@
 /*   By: aweissha <aweissha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:36:58 by aweissha          #+#    #+#             */
-/*   Updated: 2023/10/18 12:13:00 by aweissha         ###   ########.fr       */
+/*   Updated: 2023/10/18 12:59:27 by aweissha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	check_keyword(const char *string, va_list args, int *len, int index)
+void	check_keyword(const char s, va_list args, int *len)
 {
-	if (string[index] == 'c')
+	if (s == 'c')
 		ft_putchar_len_fd(va_arg(args, int), len, 1);
-	else if (string[index] == 's')
+	else if (s == 's')
 		ft_putstr_len_fd(va_arg(args, char *), len, 1);
-	else if (string[index] == 'p')
+	else if (s == 'p')
 		ft_putptr(va_arg(args, void *), len, 1);
-	else if (string[index] == 'd' || string[index] == 'i')
+	else if (s == 'd' || s == 'i')
 		ft_putnbr_len_fd(va_arg(args, int), len, 1);
-	else if (string[index] == 'u')
+	else if (s == 'u')
 		ft_unsigned_putnbr_len_fd(va_arg(args, unsigned int), len, 1);
-	else if (string[index] == 'x')
+	else if (s == 'x')
 		ft_putnbr_hex_len_fd(va_arg(args, unsigned int), len, 1);
-	else if (string[index] == 'X')
+	else if (s == 'X')
 		ft_putnbr_hex_upper_len_fd(va_arg(args, unsigned int), len, 1);
-	else if (string[index] == '%')
+	else if (s == '%')
 		ft_putchar_len_fd('%', len, 1);
 }
 
@@ -45,7 +45,7 @@ int	ft_printf(const char *string, ...)
 	{
 		if (string[i] == '%')
 		{
-			check_keyword(string, args, &len, i + 1);
+			check_keyword(string[i + 1], args, &len);
 			i++;
 		}
 		else
@@ -58,5 +58,5 @@ int	ft_printf(const char *string, ...)
 
 // int	main(void)
 // {
-// 	ft_printf("%c", '0');
+// 	ft_printf("%p\n", NULL);
 // }
