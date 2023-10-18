@@ -6,13 +6,13 @@
 /*   By: aweissha <aweissha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:36:58 by aweissha          #+#    #+#             */
-/*   Updated: 2023/10/17 17:40:26 by aweissha         ###   ########.fr       */
+/*   Updated: 2023/10/18 10:11:40 by aweissha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	check_keyword(const char *string, va_list args, int *len, unsigned int index)
+void	check_keyword(const char *string, va_list args, int *len, unsigned int index)
 {
 	if (string[index] == 'c')
 		ft_putchar_len_fd(va_arg(args, int), len, 1);
@@ -30,9 +30,6 @@ static int	check_keyword(const char *string, va_list args, int *len, unsigned in
 		ft_putnbr_hex_upper_len_fd(va_arg(args, int), len, 1);
 	else if (string[index] == '%')
 		ft_putchar_len_fd('%', len, 1);
-	else
-		return (0);
-	return (1);
 }
 
 int	ft_printf(const char *string, ...)
@@ -46,8 +43,11 @@ int	ft_printf(const char *string, ...)
 	i = 0;
 	while (string[i] != '\0')
 	{
-		if (string[i] == '%' && check_keyword(string, args, &len, i + 1) != 0)
-			i++;
+		if (string[i] == '%')
+		{
+			check_keyword(string, args, &len, i + 1);
+			i++;			
+		}
 		else
 			ft_putchar_len_fd(string[i], &len, 1);
 		i++;
