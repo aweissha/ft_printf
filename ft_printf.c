@@ -6,13 +6,13 @@
 /*   By: aweissha <aweissha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:36:58 by aweissha          #+#    #+#             */
-/*   Updated: 2023/10/20 10:59:11 by aweissha         ###   ########.fr       */
+/*   Updated: 2023/10/20 11:27:31 by aweissha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	check_keyword(const char s, va_list args, int *len)
+static void	check_keyword(const char s, va_list args, int *len)
 {
 	if (s == 'c')
 		ft_putchar_len_fd(va_arg(args, int), len, 1);
