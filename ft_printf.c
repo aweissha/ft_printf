@@ -6,7 +6,7 @@
 /*   By: aweissha <aweissha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:36:58 by aweissha          #+#    #+#             */
-/*   Updated: 2023/10/18 16:19:18 by aweissha         ###   ########.fr       */
+/*   Updated: 2023/10/20 10:59:11 by aweissha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ void	check_keyword(const char s, va_list args, int *len)
 	if (s == 'c')
 		ft_putchar_len_fd(va_arg(args, int), len, 1);
 	else if (s == 's')
-		ft_putstr_len_fd(va_arg(args, char *), len, 1);
+		ft_putstr_len(va_arg(args, char *), len);
 	else if (s == 'p')
-		ft_putptr(va_arg(args, void *), len, 1);
+		ft_putptr(va_arg(args, void *), len);
 	else if (s == 'd' || s == 'i')
-		ft_putnbr_len_fd(va_arg(args, int), len, 1);
+		ft_putnbr_len(va_arg(args, int), len);
 	else if (s == 'u')
-		ft_unsigned_putnbr_len_fd(va_arg(args, unsigned int), len, 1);
+		ft_unsigned_putnbr_len(va_arg(args, unsigned int), len);
 	else if (s == 'x')
-		ft_putnbr_hex_len_fd(va_arg(args, unsigned int), len, 1);
+		ft_putnbr_hex_len(va_arg(args, unsigned int), len);
 	else if (s == 'X')
-		ft_putnbr_hex_upper_len_fd(va_arg(args, unsigned int), len, 1);
+		ft_putnbr_hex_upper_len(va_arg(args, unsigned int), len);
 	else if (s == '%')
 		ft_putchar_len_fd('%', len, 1);
 }
@@ -52,7 +52,7 @@ int	ft_printf(const char *string, ...)
 			ft_putchar_len_fd(string[i], &len, 1);
 		i++;
 		if (len == -1)
-			return (len);
+			break ;
 	}
 	va_end(args);
 	return (len);

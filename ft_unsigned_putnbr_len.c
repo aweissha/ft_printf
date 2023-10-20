@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_hex_len_fd.c                             :+:      :+:    :+:   */
+/*   ft_unsigned_putnbr_len_fd.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aweissha <aweissha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 12:06:08 by aweissha          #+#    #+#             */
-/*   Updated: 2023/10/18 16:15:09 by aweissha         ###   ########.fr       */
+/*   Created: 2023/10/17 12:04:32 by aweissha          #+#    #+#             */
+/*   Updated: 2023/10/20 10:50:05 by aweissha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbr_hex_len_fd(unsigned int nbr, int *len, int fd)
+void	ft_unsigned_putnbr_len(unsigned int n, int *len)
 {
-	if (nbr < 0)
+	if (n >= 10)
 	{
-		ft_putchar_len_fd('-', len, fd);
-		nbr = nbr * (-1);
-	}
-	if (nbr >= 16)
-	{
-		ft_putnbr_hex_len_fd(nbr / 16, len, fd);
+		ft_unsigned_putnbr_len(n / 10, len);
 		if ((*len) != -1)
-			ft_putchar_len_fd("0123456789abcdef"[nbr % 16], len, fd);
+			ft_putchar_len_fd((n % 10) + '0', len, 1);
 	}
 	else
 		if ((*len) != -1)
-			ft_putchar_len_fd("0123456789abcdef"[nbr % 16], len, fd);
+			ft_putchar_len_fd((n % 10) + '0', len, 1);
 }
